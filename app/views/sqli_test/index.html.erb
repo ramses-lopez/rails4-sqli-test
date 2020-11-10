@@ -1,7 +1,7 @@
 <div class="pt-5">
   <div class="border border-primary p-3 mb-3">
     <h3>Hardcoded String</h3>
-    <% list = User.where("role = 'regular0'") %>
+    <% list = User.where("role = 'regular'") %>
     <code> User.where("role = 'regular'") </code>
     <p class="bg-light p-3">
       <samp class="">
@@ -27,7 +27,7 @@
 
   <div class="border border-primary p-3 mb-3">
     <h3>Binding Variable Notation</h3>
-    <% list = User.where("role = ?", 'regular1') %>
+    <% list = User.where("role = ?", 'regular') %>
     <code> User.where("role = ?", 'regular') </code>
     <p class="bg-light p-3">
       <samp class="">
@@ -52,7 +52,7 @@
 
   <div class="border border-primary p-3 mb-3">
     <h3>Named Notation</h3>
-    <% list = User.where("role = :role", role: 'regular2') %>
+    <% list = User.where("role = :role", role: 'regular') %>
     <code>User.where("role = :role", role: 'regular')</code>
     <p class="bg-light p-3">
       <samp class="">
@@ -77,7 +77,7 @@
 
   <div class="border border-primary p-3 mb-3">
     <h3>Hash Notation</h3>
-    <% list = User.where(role: 'regular3') %>
+    <% list = User.where(role: 'regular') %>
     <code> User.where(role: 'regular') </code>
     <p class="bg-light p-3">
       <samp class="">
