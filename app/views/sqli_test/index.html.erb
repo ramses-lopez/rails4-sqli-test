@@ -1,0 +1,101 @@
+<div class="pt-5">
+  <div class="border border-primary p-3 mb-3">
+    <h3>Hardcoded String</h3>
+    <% list = User.where("role = 'regular0'") %>
+    <code> User.where("role = 'regular'") </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    Results: <%= list.count %>
+
+    <hr/>
+    <h4 class="text-danger">SQLi</h4>
+    <% list = User.where("role = 'regular' or 1=1") %>
+    <code> User.where("role = 'regular' or 1=1") </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    <p>
+      Results: <%= list.count %>
+    </p>
+
+  </div>
+
+  <div class="border border-primary p-3 mb-3">
+    <h3>Binding Variable Notation</h3>
+    <% list = User.where("role = ?", 'regular1') %>
+    <code> User.where("role = ?", 'regular') </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    Results: <%= list.count %>
+
+    <hr/>
+
+    <h4 class="text-danger">SQLi attempt</h4>
+    <% list = User.where("role = ?", 'regular or 1=1') %>
+    <code> User.where("role = ?", 'regular or 1=1') </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    Results: <%= list.count %>
+
+  </div>
+
+  <div class="border border-primary p-3 mb-3">
+    <h3>Named Notation</h3>
+    <% list = User.where("role = :role", role: 'regular2') %>
+    <code>User.where("role = :role", role: 'regular')</code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    Results: <%= list.count %>
+
+    <hr/>
+    <h4 class="text-danger">SQLi</h4>
+    <% list = User.where("role = :role", role: 'regular or 1=1') %>
+    <code> User.where("role = :role", role: 'regular or 1=1') </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    <p>
+      Results: <%= list.count %>
+    </p>
+  </div>
+
+  <div class="border border-primary p-3 mb-3">
+    <h3>Hash Notation</h3>
+    <% list = User.where(role: 'regular3') %>
+    <code> User.where(role: 'regular') </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    Results: <%= list.count %>
+    <hr/>
+    <h4 class="text-danger">SQLi</h4>
+    <% list = User.where(role: 'regular or 1=1') %>
+    <code> User.where(role: 'regular or 1=1') </code>
+    <p class="bg-light p-3">
+      <samp class="">
+        <%= list.inspect %>
+      <samp>
+    </p>
+    <p>
+      Results: <%= list.count %>
+    </p>
+  </div>
+</div>
